@@ -32,7 +32,9 @@
       </form>
       <div class="w-full text-center mt-6">
         <span class="font-semibold">I'm already a member.</span>
-        <!-- <span class="ml-1"><router-link to={ name: 'Login', params: {} }>Sign In</router-link></span> -->
+        <span class="ml-1">
+          <router-link :to="{ name: 'Login', params: {} }" class="text-primary font-bold">Sign In</router-link>
+        </span>
       </div>
     </div>
   </div>
