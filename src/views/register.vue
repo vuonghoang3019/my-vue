@@ -1,20 +1,22 @@
 <template>
   <div class="mt-8">
     <div class="container mx-auto px-8">
-      <form @submit="onSubmit" class="flex flex-col justify-start space-y-6">
+      <form @submit.prevent="onSubmit" class="flex flex-col justify-start space-y-6">
         <div class="row">
           <label for="fullName" class="flex flex-col">
             <span class="font-semibold">Full name</span>
             <input type="text" placeholder="Test..." 
             id="fullName"
+            v-model="fullName"
             class="px-4 py-3 rounded-lg border border-gray-300 mt-1" />
           </label>
         </div>
         <div class="row">
           <label for="email" class="flex flex-col">
             <span class="font-semibold">Email</span>
-            <input type="email" placeholder="Test..." 
+            <input type="text" placeholder="Test..." 
             id="email"
+            v-model="email"
             class="px-4 py-3 rounded-lg border border-gray-300 mt-1" />
           </label>
         </div>
@@ -23,6 +25,7 @@
             <span class="font-semibold">Password</span>
             <input type="password" placeholder="Test..." 
             id="password"
+            v-model="password"
             class="px-4 py-3 rounded-lg border border-gray-300 mt-1" />
           </label>
         </div>
@@ -41,11 +44,22 @@
 </template>
 
 <script>
+import { ref } from "vue"
 export default {
   setup () {
-    function onSubmit() {}
+    const fullName = ref("");
+    const email = ref("");
+    const password = ref("");
+    function onSubmit() {
+      console.log(fullName);
+      console.log(email);
+      console.log(password);
+    }
     return {
-      onSubmit
+      onSubmit,
+      fullName,
+      email,
+      password
     }
   },
 }
