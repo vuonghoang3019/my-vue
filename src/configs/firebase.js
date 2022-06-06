@@ -17,6 +17,6 @@ const app = initializeApp(firebaseConfig);
 
 const projectAuth = getAuth(app);
 const projectFireStore = getFirestore(app);
-// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+// const timestamp = projectFireStore.Timestamp.now();
 
 export { projectAuth, projectFireStore };
