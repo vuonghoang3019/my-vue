@@ -45,15 +45,15 @@
 
 <script>
 import { ref } from "vue"
+import { useSignUp } from '../composables/useSignUp.js'
+
 export default {
   setup () {
     const fullName = ref("");
     const email = ref("");
     const password = ref("");
     function onSubmit() {
-      console.log(fullName);
-      console.log(email);
-      console.log(password);
+      
     }
     return {
       onSubmit,

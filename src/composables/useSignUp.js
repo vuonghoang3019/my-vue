@@ -3,7 +3,7 @@ import { projectAuth } from "@/configs/firebase"
 const error = ref(null)
 const isPending = ref(false)
 
-async function useSignUp(email, password, fullName) {
+async function signUp(email, password, fullName) {
 	error.value = null;
 	try {
 		const response =   await projectAuth.createUserWithEmailAndPassword(email, password);
@@ -17,5 +17,5 @@ async function useSignUp(email, password, fullName) {
 }
 
 export function useSignUp() {
-  return {  }
+  return { error, signUp, isPending }
 }
