@@ -49,12 +49,11 @@ import { useSignUp } from '../composables/useSignUp.js'
 export default {
   setup () {
     const { error, isPending, signUp } = useSignUp();
-
     const fullName = ref("");
     const email = ref("");
     const password = ref("");
     async function onSubmit() {
-      await signUp(email.value, password.value)
+      await signUp(email.value, password.value, fullName)
     }
     return {
       onSubmit,
@@ -62,7 +61,7 @@ export default {
       email,
       password,
       error,
-      isPending,
+      isPending
     }
   },
 }
