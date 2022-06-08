@@ -30,9 +30,13 @@
           </label>
         </div>
         <div class="row">
-          <button type="submit" class="py-3 text-center w-full bg-primary text-white font-bold rounded-lg">Sign up</button>
+          <button v-if="!isPending" type="submit" class="py-3 text-center w-full bg-primary text-white font-bold rounded-lg">Sign up</button>
+          <button v-else type="submit" class="py-3 text-center w-full bg-gray cursor-not-allowed text-white font-bold rounded-lg" disabled>Loading..</button>
         </div>
       </form>
+      <div class="text-left" v-if="error">
+        <span>{{ error }}</span>
+      </div>
       <div class="w-full text-center mt-6">
         <span class="font-semibold">I'm already a member.</span>
         <span class="ml-1">
@@ -52,6 +56,7 @@ export default {
     const fullName = ref("");
     const email = ref("");
     const password = ref("");
+    // const isPending = isPending.value
     async function onSubmit() {
       await signUp(email.value, password.value, fullName)
     }
@@ -61,7 +66,7 @@ export default {
       email,
       password,
       error,
-      isPending
+      isPending,
     }
   },
 }

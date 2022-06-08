@@ -5,8 +5,8 @@
         <div class="row">
           <label for="email" class="flex flex-col">
             <span class="font-semibold">Email</span>
-            <input type="email" placeholder="Test..." 
-            id="email"
+            <input type="text" placeholder="Test..." 
+            id="email" v-model="email"
             class="px-4 py-3 rounded-lg border border-gray-300 mt-1" />
           </label>
         </div>
@@ -14,6 +14,7 @@
           <label for="password" class="flex flex-col">
             <span class="font-semibold">Password</span>
             <input type="password" placeholder="Test..." 
+            v-model="password"
             id="password"
             class="px-4 py-3 rounded-lg border border-gray-300 mt-1" />
           </label>
@@ -35,11 +36,25 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useSignIn } from '../composables/useSignIn.js'
+
 export default {
   setup () {
-    function onSubmit() {}
+    const { signIn, isPending, error } = useSignIn();
+    const email = ref(null);
+    const password = ref(null);
+
+    async function onSubmit() {
+      await signIn(email.value, password.value)
+    }
+
     return {
-      onSubmit
+      onSubmit,
+      email,
+      password,
+      error,
+      isPending
     }
   },
 }
